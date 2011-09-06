@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset=utf-8>
+	<title>Facebook Graph API Explorer - MrColes.com</title>
+	<meta name="description" content="A tool to view and browse the Facebook Graph API data by clicking on user ids, paging urls, and introspected metadata urls. It lets you see what data you can view through a Facebook App and toggle permissions to see how that affects what data you can see." />
+    <link rel="canonical" href="http://mrcoles.com/facebook-graph-api-explorer/" />
+	<link rel="stylesheet" type="text/css" media="screen" href="screen.css" />
+</head>
+<body>
+
+  <div id="container">
+	<div id="alpha">
+	  <h3 class="right tall">MrColes.com / by <a href="http://mrcoles.com/">Peter Coles</a> / <a href="http://mrcoles.com/blog/exploring-facebook-graph-api-data/">related blog post</a></h3>
+	  <h1>The Original Facebook Graph Api Explorer*</h1>
+	  <div id="user-info" class="clr">
+		<button class="login invisible left" title="this button will open a new window">begin by connecting to facebook...</button>
+		<div id="user-img" class="left"></div>
+		<p>
+		  <span></span>
+		  <a id="logout" class="invisible small" href="#">logout</a>
+		</p>
+
+	  </div>
+	  <h4>What is it</h4>
+	  <p>
+		The Facebook Graph API Explorer is a simple Facebook app that lets you browse through the JSON data returned by <a href="http://developers.facebook.com/docs/reference/api/">Facebook Graph API</a> requests.
+		Not only can you see the raw data, but you can also navigate through it by clicking on the <strong>&raquo;</strong> symbols next to ids or by following urls that link to <em>https://graph.facebook.com…</em> (which are provided by the <a href="http://developers.facebook.com/docs/api#introspection">introspection feature</a> and pagination links).
+	  </p>
+	  <p>
+		Furthermore, you can view and/or authorize any of the Facebook <a href="http://developers.facebook.com/docs/authentication/permissions">extended permissions</a> for this app. This can be useful if you try to view a particular path and get an error or an empty list of results, e.g., to view your photos, you need to allow `user_photo_video_tags` (btw, there’s an extra feature related to hovering over image urls). You can do additional permissions management on the <a href="http://www.facebook.com/settings/?tab=applications">Facebook Application Settings page</a>.
+	  </p>
+
+	  <h4>Who is it for</h4>
+	  <p>
+		This tool is primarily for Facebook App developers to who want to see the actual data that gets returned by API calls. It goes a step further by letting you explore the different types of data that are available and giving you the option to toggle permissions that might be required to view the data.
+	  </p>
+	  <p>
+		If you’re trying to see what is publicly shared about someone via the API, then—while logged out—you can enter a user id or alias into the “Custom API Path” box and hit enter. Depending on your relationship to that person, you may see more data when you’re Facebook connected to this app.
+	  </p>
+
+	  <p>
+		Please leave any questions, complaints, praise, or indifference in the comments on the <strong><a href="http://mrcoles.com/blog/exploring-facebook-graph-api-data/">Facebook Graph API Explorer blog post</a></strong>.
+	  </p>
+
+	  <p class="small dim">
+		*a very similar tool (with the same exact name) was released on the facebook developers page <strong>after</strong>
+		this one was built, so I have rebranded mine as “The Original Facebook Graph API Explorer”
+	  </p>
+
+<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fmrcoles.com%2Ffacebook-graph-api-explorer%2F&amp;layout=standard&amp;show_faces=true&amp;width=600&amp;action=like&amp;font=helvetica&amp;colorscheme=light&amp;height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:600px; h¯eight:80px;" allowTransparency="true"></iframe>
+
+	  <br />
+
+	  <div id="loadingfb">waiting for facebook…</div>
+
+	<div id="beta">
+	  <h3>Bookmarks <span class="help" title="These are bookmarks to specific paths in the Graph API. They are here for your convenience.">(?)</span></h3>
+	  <ul id="objects">
+		<li><a href="#/me">/me</a></li>
+		<li><a href="#/me/friends">/me/friends</a></li>
+		<li><a href="#/hunch">/hunch</a></li>
+		<li><a href="#/f8">/f8</a></li>
+	  </ul>
+	  <br />
+
+	  <h3>Custom API Path <span class="help" title="Type in any user id, alias, or custom API path here and hit enter to explore its data.">(?)</span></h3>
+	  <form id="custom_path_form" action="#">
+		<input type="text" id="id_path" name="path" />
+	  </form>
+	  <br />
+
+	  <button class="login invisible">connect to facebook...</button>
+
+	  <h3 id="permissions-header" class="invisible">Permissions <span class="help" title="This shows the current state of all the extended permissions for this app. To enable a permission, click on the &quot;0&quot; to toggle it to a &quot;1&quot; and then click the &quot;request selected perms&quot; button. You must be Facebook connected to use this feature.">(?)</span></h3>
+	  <button class="request-permissions invisible">request selected perms</button><br /><br />
+	  <ul id="permissions"></ul>
+	  <button class="request-permissions invisible">request selected perms</button>
+
+	</div>
+
+	<div id="gamma">
+	  <h3 id="cur-url"></h3>
+	  <div id="history"></div>
+	  <div id="data" class="json"></div>
+	</div>
+  </div>
+
+  <span class="indicator"></span>
+
+  <div id="fb-root"></div>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+  <script src="jquery.tooltip.js"></script>
+  <script src="app.js"></script>
+
+<script>
+var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-4202460-2']); _gaq.push(['_trackPageview']);
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = 'http://www.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+
+</body>
+</html>
