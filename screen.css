@@ -59,6 +59,7 @@ img.right { margin: 0 0 4px 15px; }
 .small { font-size: 12px; }
 .large { font-size: 15px; }
 .dim { color: #999; }
+.dim a { color: #666; }
 
 .invisible { visibility: hidden; }
 
