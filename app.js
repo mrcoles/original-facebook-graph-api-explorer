@@ -14,8 +14,28 @@
         var outbtn = $('#logout').removeClass('invisible'),
             inbtn = $('button.login').removeClass('invisible');
 
-        // if we dont have a session, just hide the user info
-        if (!response.session) {
+        if (response.status === 'connected') {
+            // the user is logged in and has authenticated your
+            // app, and response.authResponse supplies
+            // the user's ID, a valid access token, a signed
+            // request, and the time the access token
+            // and signed request each expire
+            // var uid = response.authResponse.userID;
+            // var accessToken = response.authResponse.accessToken;
+            logged_in = true;
+
+            inbtn.hide();
+            outbtn.show();
+            $('#permissions-header').removeClass('invisible');
+
+            initData();
+            getPermissions();
+
+        // } else if (response.status === 'not_authorized') {
+        //     // the user is logged in to Facebook,
+        //     // but has not authenticated your app
+        } else {
+            // the user isn't logged in to Facebook.
             logged_in = false;
             loaded_me = false;
             first_render = true;
@@ -23,19 +43,9 @@
             $('#user-info p').hide();
             outbtn.hide();
             inbtn.show();
-            $('#cur-url').add('#data').add('#history').add('#permissions').empty();
+            $('#cur-url, #data, #history, #permissions').empty();
             $('#permissions-header').addClass('invisible');
-			return;
         }
-
-        logged_in = true;
-
-        inbtn.hide();
-        outbtn.show();
-        $('#permissions-header').removeClass('invisible');
-
-        initData();
-        getPermissions();
     }
 
     //
@@ -482,7 +492,8 @@
     window.fbAsyncInit = function() {
         // initialize the library with the API key
         FB.init({
-            apiKey: '163098883714272', //f4d5e8dec506f946e4b1eb7fb6dbc0f4',
+            appId: '163098883714272', //f4d5e8dec506f946e4b1eb7fb6dbc0f4',
+            channelUrl: '//mrcoles.com/facebook-graph-api-explorer/channel.html',
             status: true,
             cookie: true,
             xfbml: false
