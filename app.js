@@ -459,7 +459,6 @@
             });
 
             // add support for hitting the back key to affect history - TODO - consider adding shift delete forward support?
-            var self = this;
             $(document).keydown(function(evt) {
                 if (evt.keyCode == 8 && self.hasPrev()) {
                     var tag = (evt.target.localName || evt.target.nodeName).toLowerCase();
@@ -482,7 +481,12 @@
     // async init function
     window.fbAsyncInit = function() {
         // initialize the library with the API key
-        FB.init({ apiKey: 'f4d5e8dec506f946e4b1eb7fb6dbc0f4', status: true, cookie: true, xfbml: false });
+        FB.init({
+            apiKey: '163098883714272', //f4d5e8dec506f946e4b1eb7fb6dbc0f4',
+            status: true,
+            cookie: true,
+            xfbml: false
+        });
 
         // fetch the status on load
         FB.getLoginStatus(handleSessionResponse);
